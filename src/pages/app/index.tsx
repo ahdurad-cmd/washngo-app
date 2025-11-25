@@ -1644,25 +1644,92 @@ export default function WebApp() {
         {activeTab === 'history' && (
           <div className="space-y-6">
             <div className="bg-slate-800/80 backdrop-blur-xl p-6 rounded-3xl border border-slate-700 shadow-lg">
-              <h2 className="text-xl font-bold text-white mb-2">Vaskehistorik</h2>
-              <p className="text-slate-400 text-sm">Oversigt over dine vaske</p>
+              <h2 className="text-xl font-bold text-white mb-2">Vask selv</h2>
+              <p className="text-slate-400 text-sm">Vælg din vaskehal og kom i gang</p>
             </div>
 
-            <div className="space-y-3">
-              {washHistory.map((wash, i) => (
-                <div key={i} className="bg-slate-800/80 backdrop-blur-xl p-5 rounded-2xl border border-slate-700 shadow-md">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-bold text-white">{wash.station}</div>
-                      <div className="text-sm text-slate-400 mt-1">{wash.date}</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xl font-bold text-white">{wash.cost} kr</div>
-                      <div className="text-xs text-green-400 mt-1">+{Math.floor(wash.cost / 10)} point</div>
-                    </div>
+            {/* Hall Selection */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-white px-1">Vælg vaskehal</h3>
+              
+              {/* Hal 1 */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-slate-800/80 backdrop-blur-xl p-5 rounded-2xl border border-slate-700 shadow-lg cursor-pointer"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-1">Hal 1</h4>
+                    <p className="text-xs text-slate-400">Skjernvej 27A, 6900 Skjern</p>
+                  </div>
+                  <div className="flex items-center gap-1 bg-green-500/20 border border-green-500/30 px-2 py-1 rounded-lg">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                    <span className="text-xs text-green-400 font-bold">Ledige</span>
                   </div>
                 </div>
-              ))}
+                
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div className="bg-slate-700/50 rounded-xl p-3">
+                    <p className="text-xs text-slate-400 mb-1">Ledige stationer</p>
+                    <p className="text-xl font-bold text-white">{availableStations}/8</p>
+                  </div>
+                  <div className="bg-slate-700/50 rounded-xl p-3">
+                    <p className="text-xs text-slate-400 mb-1">Ventetid</p>
+                    <p className="text-xl font-bold text-white">~2 min</p>
+                  </div>
+                </div>
+
+                <button className="w-full bg-gradient-to-r from-[#0066CC] to-[#004C99] text-white font-bold py-3 rounded-xl">
+                  Vælg Hal 1
+                </button>
+              </motion.div>
+
+              {/* Hal 2 */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-slate-800/80 backdrop-blur-xl p-5 rounded-2xl border border-slate-700 shadow-lg cursor-pointer"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-1">Hal 2</h4>
+                    <p className="text-xs text-slate-400">Skjernvej 27A, 6900 Skjern</p>
+                  </div>
+                  <div className="flex items-center gap-1 bg-green-500/20 border border-green-500/30 px-2 py-1 rounded-lg">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                    <span className="text-xs text-green-400 font-bold">Ledige</span>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div className="bg-slate-700/50 rounded-xl p-3">
+                    <p className="text-xs text-slate-400 mb-1">Ledige stationer</p>
+                    <p className="text-xl font-bold text-white">5/8</p>
+                  </div>
+                  <div className="bg-slate-700/50 rounded-xl p-3">
+                    <p className="text-xs text-slate-400 mb-1">Ventetid</p>
+                    <p className="text-xl font-bold text-white">~5 min</p>
+                  </div>
+                </div>
+
+                <button className="w-full bg-gradient-to-r from-[#0066CC] to-[#004C99] text-white font-bold py-3 rounded-xl">
+                  Vælg Hal 2
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Quick Info */}
+            <div className="bg-gradient-to-br from-blue-900/40 to-slate-800/40 backdrop-blur-xl rounded-2xl p-4 border border-blue-500/30">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p className="text-sm text-white font-medium mb-1">Sådan vasker du selv</p>
+                  <p className="text-xs text-slate-300">Vælg din hal, scan QR-koden ved stationen, og vælg dit vaskeprogram. Det er nemt og hurtigt!</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -1939,22 +2006,53 @@ export default function WebApp() {
         <motion.button 
           onClick={() => {
             hapticFeedback('light')
-            setActiveTab('history')
+            setActiveTab('selfwash')
           }}
           whileTap={{ scale: 0.9 }}
           className={`flex flex-col items-center gap-1 transition-colors relative ${
-            activeTab === 'history' ? 'text-blue-500' : 'text-slate-500'
+            activeTab === 'selfwash' ? 'text-blue-500' : 'text-slate-500'
           }`}
         >
-          {activeTab === 'history' && (
+          {activeTab === 'selfwash' && (
             <motion.div
               layoutId="bottomTab"
               className="absolute -top-1 left-1/2 -translate-x-1/2 w-12 h-1 bg-blue-500 rounded-full"
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             />
           )}
-          <Icon name="clock" className="w-6 h-6" />
-          <span className="text-[10px] font-medium">Historik</span>
+          <Icon name="wash" className="w-6 h-6" />
+          <span className="text-[10px] font-medium">Vask selv</span>
+
+                    {/* Historik Section - Moved to Profile */}
+                    <div className="bg-slate-800/80 backdrop-blur-xl rounded-3xl p-6 border border-slate-700 shadow-lg">
+                      <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                        <Icon name="clock" className="w-5 h-5" color="#cbd5e1" />
+                        Vaskehistorik
+                      </h3>
+                      <div className="space-y-3">
+                        {washHistory.slice(0, 5).map((wash, i) => (
+                          <div key={i} className="bg-slate-700/50 backdrop-blur-xl p-4 rounded-xl border border-slate-600">
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <div className="font-bold text-white text-sm">{wash.station}</div>
+                                <div className="text-xs text-slate-400 mt-1">{wash.date}</div>
+                              </div>
+                              <div className="text-right">
+                                <div className="text-lg font-bold text-white">{wash.cost} kr</div>
+                                <div className="text-xs text-green-400 mt-1">+{Math.floor(wash.cost / 10)} point</div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {washHistory.length > 5 && (
+                        <button className="w-full mt-3 text-sm text-blue-400 font-medium hover:text-blue-300 transition-colors">
+                          Se alle {washHistory.length} vasker
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Achievements Section */}
         </motion.button>
 
         <motion.button 
