@@ -5,6 +5,7 @@
     { "src": "package.json", "use": "@vercel/next" }
   ],
   "routes": [
+    { "src": "/app", "headers": { "Cache-Control": "no-store, must-revalidate" } },
     { "src": "/docs/(.*)", "dest": "/docs" }
   ],
   "env": {
