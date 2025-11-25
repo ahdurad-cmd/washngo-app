@@ -3297,3 +3297,10 @@ export default function WebApp() {
     </div>
   )
 }
+
+// Force dynamic rendering to avoid stale static cache
+export async function getServerSideProps() {
+  return { props: { deployVersion: '2025-11-25-1' } }
+}
+
+export const APP_DEPLOY_VERSION = '2025-11-25-1'
