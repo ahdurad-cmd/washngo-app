@@ -632,44 +632,6 @@ export default function WebApp() {
               </span>
             )}
           </button>
-          
-          {/* Notifications Dropdown */}
-          <AnimatePresence>
-            {showNotifications && (
-              <motion.div
-                initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-                className="fixed top-16 right-6 w-80 bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 z-[150] overflow-hidden"
-              >
-                <div className="bg-gradient-to-r from-[#0066CC] to-[#004C99] px-4 py-3">
-                  <h3 className="font-bold text-white">Notifikationer</h3>
-                </div>
-                <div className="max-h-96 overflow-y-auto">
-                  {notifications.map(notif => (
-                    <div 
-                      key={notif.id}
-                      className={`px-4 py-3 border-b border-slate-700 last:border-0 ${!notif.read ? 'bg-blue-900/30' : 'bg-slate-800'}`}
-                    >
-                      <div className="flex items-start gap-3">
-                        <div className={`w-2 h-2 rounded-full mt-2 ${!notif.read ? 'bg-blue-400' : 'bg-slate-600'}`} />
-                        <div className="flex-1">
-                          <p className="text-sm text-slate-200">{notif.text}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <button 
-                  onClick={() => setNotifications(prev => prev.map(n => ({...n, read: true})))}
-                  className="w-full py-2 text-sm text-blue-400 font-bold hover:bg-slate-700 transition-colors"
-                >
-                  Marker alle som læst
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
           </div>
         </div>
 
@@ -3303,6 +3265,44 @@ export default function WebApp() {
                 </motion.div>
               </motion.div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Notifications Dropdown - Top Level for proper z-index */}
+      <AnimatePresence>
+        {showNotifications && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-16 right-6 w-80 bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 z-[150] overflow-hidden"
+          >
+            <div className="bg-gradient-to-r from-[#0066CC] to-[#004C99] px-4 py-3">
+              <h3 className="font-bold text-white">Notifikationer</h3>
+            </div>
+            <div className="max-h-96 overflow-y-auto">
+              {notifications.map(notif => (
+                <div 
+                  key={notif.id}
+                  className={`px-4 py-3 border-b border-slate-700 last:border-0 ${!notif.read ? 'bg-blue-900/30' : 'bg-slate-800'}`}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className={`w-2 h-2 rounded-full mt-2 ${!notif.read ? 'bg-blue-400' : 'bg-slate-600'}`} />
+                    <div className="flex-1">
+                      <p className="text-sm text-slate-200">{notif.text}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button 
+              onClick={() => setNotifications(prev => prev.map(n => ({...n, read: true})))}
+              className="w-full py-2 text-sm text-blue-400 font-bold hover:bg-slate-700 transition-colors"
+            >
+              Marker alle som læst
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
