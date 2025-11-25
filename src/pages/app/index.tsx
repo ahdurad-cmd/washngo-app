@@ -362,6 +362,7 @@ export default function WebApp() {
   const [dailyStreak, setDailyStreak] = useState(7) // Days in a row
   const [showCarProfile, setShowCarProfile] = useState(false)
   const [selectedCar, setSelectedCar] = useState(0)
+  const [showFullHistory, setShowFullHistory] = useState(false)
   
   // Car profiles - Multiple vehicles
   const [carProfiles] = useState([
@@ -462,35 +463,6 @@ export default function WebApp() {
   }
 
   // Live weather fetch (Open-Meteo) every 15 min
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const res = await fetch('/api/weather')
-        if (!res.ok) return
-        const data = await res.json()
-        if (data && data.temp != null) {
-          setWeatherData({ temp: data.temp, condition: data.condition, rainChance: data.rainChance })
-        }
-      } catch (e) {}
-    }
-    fetchWeather()
-    const interval = setInterval(fetchWeather, 15 * 60 * 1000)
-    return () => clearInterval(interval)
-  }, [])
-
-  // Handle payment and auto-start wash
-  const handlePayment = async () => {
-    if (!selectedStation) {
-      alert('Vælg venligst en station først')
-      return
-    }
-
-    setIsProcessingPayment(true)
-    
-    // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    let cost = washDuration * 25
     const nominalCost = cost
     const usingClip = paymentMethod === 'clip'
     if (usingClip) {
@@ -1897,6 +1869,41 @@ export default function WebApp() {
               </div>
             </div>
 
+            {/* Vaskehistorik (kompakt) */}
+            <div className="bg-slate-800/80 backdrop-blur-xl rounded-3xl p-5 border border-slate-700 shadow-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-bold text-white flex items-center gap-2">
+                    <Icon name="clock" className="w-5 h-5" color="#cbd5e1" />
+                    Vaskehistorik
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">{washHistory.length} vasker totalt</p>
+                </div>
+                <button
+                  onClick={() => setShowFullHistory(prev => !prev)}
+                  className="text-xs font-bold px-3 py-1 rounded-full border border-slate-600 text-slate-300 hover:text-white hover:border-slate-500 transition-colors"
+                >
+                  {showFullHistory ? 'Luk' : 'Vis'}
+                </button>
+              </div>
+              {showFullHistory && (
+                <div className="mt-4 space-y-2 max-h-48 overflow-y-auto pr-1">
+                  {washHistory.map((wash, i) => (
+                    <div key={i} className="flex items-center justify-between bg-slate-700/40 rounded-xl px-3 py-2 text-xs">
+                      <div>
+                        <p className="font-bold text-white leading-tight">{wash.station}</p>
+                        <p className="text-[10px] text-slate-400">{wash.date}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-bold text-white">{wash.cost} kr</p>
+                        <p className="text-[10px] text-green-400">+{Math.floor(wash.cost / 10)}p</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* Achievements Section */}
             <div className="bg-slate-800/80 backdrop-blur-xl rounded-3xl p-6 border border-slate-700 shadow-lg">
               <div className="flex items-center justify-between mb-4">
@@ -2056,36 +2063,7 @@ export default function WebApp() {
           <Icon name="wash" className="w-6 h-6" />
           <span className="text-[10px] font-medium">Vask selv</span>
 
-                    {/* Historik Section - Moved to Profile */}
-                    <div className="bg-slate-800/80 backdrop-blur-xl rounded-3xl p-6 border border-slate-700 shadow-lg">
-                      <h3 className="font-bold text-white mb-4 flex items-center gap-2">
-                        <Icon name="clock" className="w-5 h-5" color="#cbd5e1" />
-                        Vaskehistorik
-                      </h3>
-                      <div className="space-y-3">
-                        {washHistory.slice(0, 5).map((wash, i) => (
-                          <div key={i} className="bg-slate-700/50 backdrop-blur-xl p-4 rounded-xl border border-slate-600">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <div className="font-bold text-white text-sm">{wash.station}</div>
-                                <div className="text-xs text-slate-400 mt-1">{wash.date}</div>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-lg font-bold text-white">{wash.cost} kr</div>
-                                <div className="text-xs text-green-400 mt-1">+{Math.floor(wash.cost / 10)} point</div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      {washHistory.length > 5 && (
-                        <button className="w-full mt-3 text-sm text-blue-400 font-medium hover:text-blue-300 transition-colors">
-                          Se alle {washHistory.length} vasker
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Achievements Section */}
+                    
         </motion.button>
 
         <motion.button 
