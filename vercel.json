@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "routes": [
+    { "src": "/docs/(.*)", "dest": "/docs" }
+  ],
+  "env": {
+    "NEXT_PUBLIC_PLAUSIBLE_DOMAIN": "",
+    "NEXT_PUBLIC_GA_ID": ""
+  }
+}

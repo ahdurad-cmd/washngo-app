@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-900 text-slate-50;
+  font-family: var(--font-body), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* Focus visible improvements for keyboard users */
+:focus-visible {
+  outline: 3px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+a {
+  @apply text-blue-600 transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-blue-700;
+}
+
+::selection {
+  @apply bg-blue-100 text-blue-900;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-slate-900/20 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-800 active:translate-y-0 active:bg-slate-900;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-900 transition duration-300 hover:border-slate-300 hover:bg-slate-50 active:border-slate-400;
+  }
+
+  .glass-panel {
+    @apply rounded-3xl border border-slate-100 bg-white p-8 shadow-xl shadow-slate-200/50;
+  }
+
+  .section-title {
+    @apply text-sm font-semibold uppercase tracking-[0.3em] text-sky-300;
+  }
+}
+
+@media print {
+  /* Hide non-essential elements */
+  header, footer, button, nav, .fixed, .sticky {
+    display: none !important;
+  }
+
+  /* Ensure main content is visible and full width */
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Reset background colors for saving ink */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Ensure images are printed */
+  img {
+    print-color-adjust: exact;
+  }
+  
+  /* Layout adjustments for print */
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  /* Ensure grid columns stack or display correctly */
+  .grid {
+    display: block !important;
+  }
+  
+  .lg\:col-span-8, .lg\:col-span-4 {
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Gør <select> options synlige på mørk baggrund på tværs af browsere */
+select, select option {
+  color: #e5e7eb; /* text-slate-200 */
+  background-color: #020617; /* slate-950 */
+}
+
+/* Animation for gradient background */
+@keyframes gradient {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.animate-gradient {
+  animation: gradient 15s ease-in-out infinite;
+}
+
+/* QR Scanner Animation */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scan {
+  animation: scan 2s linear infinite;
+}

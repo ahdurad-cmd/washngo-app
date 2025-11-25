@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="da" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WashNGo BilCenter – Webshop preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif; }
+    </style>
+  </head>
+  <body class="min-h-full bg-slate-950 text-slate-50">
+    <main class="relative overflow-hidden bg-slate-950">
+      <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(16,185,129,0.18),_transparent_55%)]"></div>
+      <div class="mx-auto max-w-6xl px-4 py-10">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.32em] text-sky-300">Webshop</p>
+        <h1 class="mt-3 text-3xl font-semibold text-white md:text-4xl">Bilplejeprodukter til gør-det-selv vask</h1>
+        <p class="mt-4 max-w-3xl text-sm text-slate-200">
+          Dette er en statisk forhåndsvisning af webshoppen. Produkterne og billederne er de samme, som bruges i den rigtige /webshop-side i din Next.js app.
+        </p>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <!-- Autoglym All Purpose Cleaner -->
+          <article class="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950/80 via-slate-900/80 to-slate-900/40 shadow-[0_18px_60px_rgba(15,23,42,0.9)]">
+            <div class="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-sky-500/20 blur-3xl"></div>
+            <div class="relative h-44 w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1629131726692-1accd0c53ce2?auto=format&fit=crop&w=1200&q=80"
+                alt="All Purpose Cleaner 1 ltr."
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="relative z-10 flex flex-1 flex-col gap-3 p-5 text-sm text-slate-100">
+              <div class="flex items-center justify-between gap-3 text-[11px] uppercase tracking-[0.26em]">
+                <span class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sky-300">Før vask</span>
+                <span class="truncate text-slate-400">Før vask / universalrens</span>
+              </div>
+              <div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-400">Autoglym</p>
+                <h3 class="mt-1 text-base font-semibold text-white">All Purpose Cleaner 1 ltr.</h3>
+              </div>
+              <p class="text-xs text-slate-200/90">Effektiv universalrens til snavsede flader i motorrum, dørfalser og omkring bilen før selve vasken.</p>
+              <p class="text-[11px] text-slate-400">Bruges til forvask og grov rengøring.</p>
+              <div class="mt-auto flex items-center justify-between pt-2 text-sm">
+                <span class="text-base font-semibold text-sky-300">149 kr.</span>
+                <span class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-sky-200">Se detaljer</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Insektfjerner -->
+          <article class="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950/80 via-slate-900/80 to-slate-900/40 shadow-[0_18px_60px_rgba(15,23,42,0.9)]">
+            <div class="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-sky-500/20 blur-3xl"></div>
+            <div class="relative h-44 w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1620891549027-dc071cc857c2?auto=format&fit=crop&w=1200&q=80"
+                alt="Insektfjerner 500 ml."
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="relative z-10 flex flex-1 flex-col gap-3 p-5 text-sm text-slate-100">
+              <div class="flex items-center justify-between gap-3 text-[11px] uppercase tracking-[0.26em]">
+                <span class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sky-300">Før vask</span>
+                <span class="truncate text-slate-400">Før vask / insektfjerner</span>
+              </div>
+              <div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-400">Autoglym</p>
+                <h3 class="mt-1 text-base font-semibold text-white">Insektfjerner 500 ml.</h3>
+              </div>
+              <p class="text-xs text-slate-200/90">Løser fastbrændte insekter fra front, spejle og forrude, så lakken skånes under vask.</p>
+              <p class="text-[11px] text-slate-400">Perfekt efter motorvejsture og sommerkørsel.</p>
+              <div class="mt-auto flex items-center justify-between pt-2 text-sm">
+                <span class="text-base font-semibold text-sky-300">129 kr.</span>
+                <span class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-sky-200">Se detaljer</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tjærefjerner -->
+          <article class="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950/80 via-slate-900/80 to-slate-900/40 shadow-[0_18px_60px_rgba(15,23,42,0.9)]">
+            <div class="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-sky-500/20 blur-3xl"></div>
+            <div class="relative h-44 w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1621068893632-97a87cf961be?auto=format&fit=crop&w=1200&q=80"
+                alt="Tjærefjerner 500 ml."
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="relative z-10 flex flex-1 flex-col gap-3 p-5 text-sm text-slate-100">
+              <div class="flex items-center justify-between gap-3 text-[11px] uppercase tracking-[0.26em]">
+                <span class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sky-300">Før vask</span>
+                <span class="truncate text-slate-400">Før vask / tjære & asfalt</span>
+              </div>
+              <div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-400">Autoglym</p>
+                <h3 class="mt-1 text-base font-semibold text-white">Tjærefjerner 500 ml.</h3>
+              </div>
+              <p class="text-xs text-slate-200/90">Fjerner tjærepletter og asfaltstænk skånsomt fra lak og fælge.</p>
+              <p class="text-[11px] text-slate-400">God til nederste døre, skørter og fælge.</p>
+              <div class="mt-auto flex items-center justify-between pt-2 text-sm">
+                <span class="text-base font-semibold text-sky-300">169 kr.</span>
+                <span class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-sky-200">Se detaljer</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

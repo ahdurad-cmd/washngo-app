@@ -1,0 +1,38 @@
+[
+  {
+    "id": "interior-clean",
+    "title": "Indvendig rengøring",
+    "desc": "Grundig støvsugning af hele kabinen, rens og aftørring af overflader, rengøring af måtter, dørfalser og ruder samt let lugtbehandling.",
+    "price": "Fra 595 kr"
+  },
+  {
+    "id": "in-out-clean",
+    "title": "Ind- og udvendig rengøring",
+    "desc": "Kombination af indvendig rengøring med håndvask, fælgrens, skumforvask og lakbeskyttelse, så bilen står flot både inde og ude.",
+    "price": "Fra 895 kr"
+  },
+  {
+    "id": "extended-detail",
+    "title": "Udvidet klargøring",
+    "desc": "Dybere behandling med ekstra tid til pletfjerning, sæderens, plastbehandling, flyverust-/tjærefjernelse og afsluttende lakforsegling.",
+    "price": "Fra 1.595 kr"
+  },
+  {
+    "id": "tire-change",
+    "title": "Dækskifte & hjulskift",
+    "desc": "Skift mellem sommer- og vinterhjul, kontrol af dæktryk og mønsterdybde samt tilspænding af hjulbolte.",
+    "price": "Fra 399 kr"
+  },
+  {
+    "id": "oil-change",
+    "title": "Olieskift & service-tjek",
+    "desc": "Olieskift med kvalitetsolie, udskiftning af oliefilter og kort visuelt service-tjek af bilen.",
+    "price": "Fra 899 kr"
+  },
+  {
+    "id": "express-wash",
+    "title": "Express udvendig vask",
+    "desc": "Hurtig, skånsom udvendig håndvask med fælgrens, aftørring og dækshine, når bilen blot trænger til at se frisk ud igen.",
+    "price": "Fra 199 kr"
+  }
+]

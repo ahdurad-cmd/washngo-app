@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "make": "Tesla",
+    "model": "Model 3 Long Range",
+    "year": 2023,
+    "price": "DKK 329.900",
+    "bodyType": "sedan",
+    "monthlyPrice": "3.495 kr.",
+    "img": "https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    "id": "2",
+    "make": "Polestar",
+    "model": "2 Long Range",
+    "year": 2023,
+    "price": "DKK 349.900",
+    "bodyType": "sedan",
+    "monthlyPrice": "3.995 kr.",
+    "img": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    "id": "3",
+    "make": "Audi",
+    "model": "Q4 e-tron",
+    "year": 2023,
+    "price": "DKK 419.900",
+    "bodyType": "suv",
+    "monthlyPrice": "4.995 kr.",
+    "img": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    "id": "4",
+    "make": "Porsche",
+    "model": "Taycan 4S",
+    "year": 2022,
+    "price": "DKK 799.900",
+    "bodyType": "sedan",
+    "monthlyPrice": "8.995 kr.",
+    "img": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    "id": "5",
+    "make": "Volkswagen",
+    "model": "ID.4 Pro",
+    "year": 2023,
+    "price": "DKK 339.900",
+    "bodyType": "suv",
+    "monthlyPrice": "3.795 kr.",
+    "img": "https://images.unsplash.com/photo-1669056970323-424727123329?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    "id": "6",
+    "make": "Tesla",
+    "model": "Model Y Performance",
+    "year": 2024,
+    "price": "DKK 429.900",
+    "bodyType": "suv",
+    "monthlyPrice": "4.495 kr.",
+    "img": "/images/juniper.png"
+  },
+  {
+    "id": "7",
+    "make": "Tesla",
+    "model": "Model Y Long Range RWD",
+    "year": 2025,
+    "price": "DKK 358.900",
+    "bodyType": "suv",
+    "monthlyPrice": "5.019 kr.",
+    "img": "/images/juniper.png"
+  }
+]

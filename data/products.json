@@ -1,0 +1,102 @@
+[
+  {
+    "id": "apc-1l",
+    "brand": "Autoglym",
+    "name": "All Purpose Cleaner 1 ltr.",
+    "category": "Før vask / universalrens",
+    "description": "Effektiv universalrens til snavsede flader i motorrum, dørfalser og omkring bilen før selve vasken.",
+    "note": "Bruges til forvask og grov rengøring.",
+    "price": "149 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "insect-500",
+    "brand": "Autoglym",
+    "name": "Insektfjerner 500 ml.",
+    "category": "Før vask / insektfjerner",
+    "description": "Løser fastbrændte insekter fra front, spejle og forrude, så lakken skånes under vask.",
+    "note": "Perfekt efter motorvejsture og sommerkørsel.",
+    "price": "129 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "tar-500",
+    "brand": "Autoglym",
+    "name": "Tjærefjerner 500 ml.",
+    "category": "Før vask / tjære & asfalt",
+    "description": "Fjerner tjærepletter og asfaltstænk skånsomt fra lak og fælge.",
+    "note": "God til nederste døre, skørter og fælge.",
+    "price": "169 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "magma-500",
+    "brand": "Autoglym",
+    "name": "Magma 500 ml.",
+    "category": "Før vask / flyverust & fælg",
+    "description": "pH-neutral rens, der skifter farve når den opløser bremsestøv og flyverust.",
+    "note": "Ideel til fælge og nederste del af karrosseriet.",
+    "price": "199 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "engine-1l",
+    "brand": "Autoglym",
+    "name": "Motorvask 1 ltr.",
+    "category": "Før vask / motorrum",
+    "description": "Speciel udviklet til rengøring af motorrum og maskindele.",
+    "note": "Bruges med omtanke på moderne motorrum.",
+    "price": "194 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "shampoo-1l",
+    "brand": "Autoglym",
+    "name": "Bilshampoo med voks 1 ltr.",
+    "category": "Vask / shampoo",
+    "description": "Koncentreret bilshampoo med let voks-effekt, der efterlader lakken ren og glat.",
+    "note": "Velegnet til manuel vask i vaskepladsen eller derhjemme.",
+    "price": "119 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "wheel-cleaner",
+    "brand": "Autoglym",
+    "name": "Fælgrens 500 ml.",
+    "category": "Vask / fælg & dæk",
+    "description": "Effektiv fælgrens der fjerner bremsestøv og vejfilm uden at skade fælgens overflade.",
+    "note": "Bruges før hovedvask for at få fælgene helt rene.",
+    "price": "159 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "interior-cleaner",
+    "brand": "Autoglym",
+    "name": "Interiørrens 500 ml.",
+    "category": "Kabine / interiør",
+    "description": "Skånsom rens til instrumentbord, plast, vinyl og tekstiler i kabinen.",
+    "note": "Efterlader en ren og mat overflade uden at fedte.",
+    "price": "139 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "glass-cleaner",
+    "brand": "Autoglym",
+    "name": "Ruderens 500 ml.",
+    "category": "Sigt / ruder",
+    "description": "Rengør effektivt ruder indvendigt og udvendigt uden at efterlade striber.",
+    "note": "Giver klart udsyn i både dagslys og mørke.",
+    "price": "99 kr.",
+    "img": "/images/products/placeholder.svg"
+  },
+  {
+    "id": "tyre-shine",
+    "brand": "Autoglym",
+    "name": "Dækshine 500 ml.",
+    "category": "Finish / dæk & plast",
+    "description": "Giver dæksiderne en dyb, mørk finish og fuldender bilens udtryk efter vask.",
+    "note": "Kan også bruges på udvendig plast og lister.",
+    "price": "129 kr.",
+    "img": "/images/products/placeholder.svg"
+  }
+]
