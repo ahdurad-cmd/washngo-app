@@ -544,6 +544,10 @@ export default function WebApp() {
         <meta name="theme-color" content="#0f172a" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
       </Head>
+      {/* Deploy version badge for cache bust verification */}
+      <div className="absolute top-2 right-2 z-[200] text-[10px] px-2 py-1 rounded bg-slate-800/80 text-slate-300 border border-slate-700">
+        v:{APP_DEPLOY_VERSION}
+      </div>
 
       {/* Pull to refresh indicator */}
       <AnimatePresence>
