@@ -641,7 +641,7 @@ export default function WebApp() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="fixed top-16 right-6 w-80 bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 z-[100] overflow-hidden"
+                className="fixed top-16 right-6 w-80 bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 z-[150] overflow-hidden"
               >
                 <div className="bg-gradient-to-r from-[#0066CC] to-[#004C99] px-4 py-3">
                   <h3 className="font-bold text-white">Notifikationer</h3>
