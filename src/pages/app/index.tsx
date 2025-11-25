@@ -463,11 +463,36 @@ export default function WebApp() {
   }
 
   // Live weather fetch (Open-Meteo) every 15 min
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const res = await fetch('/api/weather')
+        if (!res.ok) return
+        const data = await res.json()
+        if (data && data.temp != null) {
+          setWeatherData({ temp: data.temp, condition: data.condition, rainChance: data.rainChance })
+        }
+      } catch (e) {}
+    }
+    fetchWeather()
+    const interval = setInterval(fetchWeather, 15 * 60 * 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Handle payment and auto-start wash
+  const handlePayment = async () => {
+    if (!selectedStation) {
+      alert('Vælg venligst en station først')
+      return
+    }
+
+    setIsProcessingPayment(true)
+    await new Promise(resolve => setTimeout(resolve, 1500))
+
+    let cost = washDuration * 25
     const nominalCost = cost
     const usingClip = paymentMethod === 'clip'
-    if (usingClip) {
-      cost = 0
-    }
+    if (usingClip) cost = 0
     const pointsEarned = Math.floor(nominalCost / 10)
     if (paymentMethod === 'loyalty') {
       setLoyaltyPoints(prev => prev - nominalCost + pointsEarned)
@@ -483,18 +508,15 @@ export default function WebApp() {
     } else {
       setLoyaltyPoints(prev => prev + pointsEarned)
     }
-    
-    // Close payment modal and start wash
+
     setShowPayment(false)
     setIsProcessingPayment(false)
     setIsScanning(false)
-    
-    // Start wash automatically
+
     setWashInProgress(true)
-    setWashTimeRemaining(washDuration * 200) // 200 seconds per token
-    setShowWashTimer(true) // Open wash timer modal
-    
-    // Simulate wash countdown
+    setWashTimeRemaining(washDuration * 200)
+    setShowWashTimer(true)
+
     const interval = setInterval(() => {
       setWashTimeRemaining(prev => {
         if (prev <= 1) {
@@ -502,7 +524,6 @@ export default function WebApp() {
           setWashInProgress(false)
           setShowWashTimer(false)
           hapticFeedback('heavy')
-          // Show success notification
           setNotifications(prev => [{
             id: Date.now(),
             text: `🎉 Vask færdig på ${washStations.find(s => s.id === selectedStation)?.name}! Du har optjent ${pointsEarned} point`,
@@ -1691,49 +1712,84 @@ export default function WebApp() {
               </button>
             </div>
 
-            {/* Quick Duration Selector */}
-            <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 border border-slate-200 shadow-lg">
-              <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Icon name="clock" className="w-5 h-5" color="#3b82f6" />
-                Vasketid (polet)
-              </h3>
-              <div className="flex items-center justify-between mb-4">
-                <button 
-                  onClick={() => setWashDuration(Math.max(1, washDuration - 1))}
-                  className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-95 shadow-sm"
-                >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M20 12H4" />
-                  </svg>
-                </button>
-                <div className="text-center">
-                  <div className="text-3xl font-black text-slate-900 leading-none">{washDuration}</div>
-                  <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Polet</div>
-                </div>
-                <button 
-                  onClick={() => setWashDuration(Math.min(12, washDuration + 1))}
-                  className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors active:scale-95 shadow-sm"
-                >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
-                  </svg>
-                </button>
+            {/* Modern Duration Selector */}
+            <div className="relative rounded-3xl p-6 border border-slate-700 shadow-lg overflow-hidden bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl" />
               </div>
-              <div className="text-center text-xs text-slate-500 mb-4">≈ {(washDuration * 3.33).toFixed(0)} min total tid</div>
-              <div className="grid grid-cols-4 gap-2 mb-4">
+              <div className="flex items-center justify-between mb-5 relative z-10">
+                <h3 className="text-sm font-semibold text-white flex items-center gap-2 tracking-wide">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/30">
+                    <Icon name="clock" className="w-4 h-4" color="#3b82f6" />
+                  </span>
+                  Vasketid (polet)
+                </h3>
+                <div className="text-right">
+                  <div className="text-xs uppercase text-slate-400 tracking-wider">Anslået tid</div>
+                  <div className="text-sm font-bold text-white">{(washDuration * 3.33).toFixed(0)} min</div>
+                </div>
+              </div>
+
+              {/* Circular indicator */}
+              <div className="flex items-center gap-6 mb-6 relative z-10">
+                <div className="relative w-24 h-24">
+                  <svg viewBox="0 0 100 100" className="w-24 h-24 rotate-[-90deg]">
+                    <circle cx="50" cy="50" r="42" stroke="rgba(255,255,255,0.1)" strokeWidth="8" fill="none" />
+                    <circle cx="50" cy="50" r="42" stroke="url(#gradTokens)" strokeWidth="8" strokeLinecap="round" fill="none"
+                      strokeDasharray={`${2 * Math.PI * 42}`}
+                      strokeDashoffset={`${(1 - washDuration/12) * 2 * Math.PI * 42}`}
+                    />
+                    <defs>
+                      <linearGradient id="gradTokens" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stopColor="#0066CC" />
+                        <stop offset="100%" stopColor="#06B6D4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <div className="text-3xl font-black text-white leading-none">{washDuration}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-blue-300 font-semibold">Polet</div>
+                  </div>
+                </div>
+                <div className="flex-1 space-y-3">
+                  <input
+                    type="range"
+                    min={1}
+                    max={12}
+                    step={1}
+                    value={washDuration}
+                    onChange={e => setWashDuration(parseInt(e.target.value))}
+                    className="w-full accent-blue-600 cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] text-slate-500 font-medium">
+                    {[1,3,6,9,12].map(m => <span key={m}>{m}</span>)}
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2 text-slate-400">
+                      <Icon name="sparkles" className="w-4 h-4" color="#3b82f6" />
+                      <span>Smart anbefaling: <span className="text-white font-bold">{(() => { if (weatherData.rainChance > 70) return 2; if (weatherData.rainChance < 30) return 4; return 3 })()} polet</span></span>
+                    </div>
+                    <div className="text-xs text-slate-400">Pris ca. {washDuration * 25} kr</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Presets */}
+              <div className="grid grid-cols-6 gap-2 mb-4 relative z-10">
                 {[1,2,3,4,6,8].map(val => (
                   <button
                     key={val}
                     onClick={() => setWashDuration(val)}
-                    className={`py-2 rounded-xl text-xs font-bold border ${washDuration === val ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'}`}
+                    className={`py-2 rounded-xl text-xs font-bold border transition-all ${washDuration === val ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-blue-500 shadow-lg shadow-blue-600/30' : 'bg-slate-900/40 text-slate-300 border-slate-600 hover:border-blue-500 hover:text-white'}`}
                   >
                     {val}
                   </button>
                 ))}
               </div>
-              <div className="text-xs text-slate-600 flex items-center justify-center gap-2">
-                <Icon name="sparkles" className="w-4 h-4" color="#3b82f6" />
-                Optimér tiden med Smart anbefaling
+              <div className="flex items-center justify-between text-[11px] text-slate-400 relative z-10">
+                <span className="flex items-center gap-2"><Icon name="shield" className="w-4 h-4" color="#10b981" /> Optimal vandforbrug</span>
+                <span className="flex items-center gap-1"><Icon name="zap" className="w-4 h-4" color="#f59e0b" /> Hurtig afslutning</span>
               </div>
             </div>
           </div>
